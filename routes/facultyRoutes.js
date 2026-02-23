@@ -44,6 +44,7 @@ import pool from "../db.js"; // ✅ REQUIRED
 import {
   loginFaculty,
   changeFacultyPassword,
+  resetFacultyPassword,
 } from "../controllers/facultyController.js";
 
 const router = express.Router();
