@@ -21,7 +21,7 @@ export const loginFaculty = async (req, res) => {
 
   try {
     const result = await pool.query(
-      "SELECT * FROM faculty WHERE registration_number = $1 AND status = true",
+      "SELECT * FROM public.faculty WHERE registration_number = $1 AND status = true",
       [registration_number]
     );
 
