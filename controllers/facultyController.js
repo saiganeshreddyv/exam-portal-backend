@@ -23,11 +23,12 @@ export const loginFaculty = async (req, res) => {
 
   try {
     const result = await pool.query(
-      "SELECT * FROM public.faculty WHERE registration_number = $1 AND status = true",
+      "SELECT * FROM faculty WHERE registration_number = $1 AND status = true",
       [registration_number]
     );
 
     console.log("🔎 DB rows found:", result.rows.length);
+    
 
     if (result.rows.length === 0) {
       console.log("❌ No faculty found with that registration_number");
@@ -42,6 +43,7 @@ export const loginFaculty = async (req, res) => {
     } else {
       match = password === user.password;
     }
+    console.log("Password length:", password.length);
 
     console.log("🔐 Password match:", match);
 
