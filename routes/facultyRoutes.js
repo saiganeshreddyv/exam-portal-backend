@@ -51,7 +51,7 @@ const router = express.Router();
 // Login
 router.post("/login", loginFaculty);
 
-
+router.get("/reset-test", resetFacultyPassword);
 // Change password
 router.post("/change-password", changeFacultyPassword);
 

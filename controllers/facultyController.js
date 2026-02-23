@@ -144,6 +144,27 @@ export const loginFaculty = async (req, res) => {
  * 🔹 Faculty Change Password
  * Used when must_change_password = TRUE
  */
+
+
+export const resetFacultyPassword = async (req, res) => {
+  try {
+    const hashed = await bcrypt.hash("Chand357", 10);
+
+    await pool.query(
+      `UPDATE public.faculty
+       SET password = $1
+       WHERE registration_number = '02938'`,
+      [hashed]
+    );
+
+    res.json({ message: "Password reset done" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Reset failed" });
+  }
+};
+
+
 export const changeFacultyPassword = async (req, res) => {
   console.log("🔥 Faculty password change hit");
   const { registration_number, newPassword } = req.body;
